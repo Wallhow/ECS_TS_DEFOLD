@@ -7,26 +7,19 @@ import { action } from "../utils/defoldTweens/Actions";
 import { MoveSystem as MoveSystem } from "../ecs/systems/MoveSystem";
 import { ControllerSystem } from "../ecs/systems/ControllerSystem";
 import { GoSetPositionSystem } from "../ecs/systems/GoSetPositionSystem";
+import { TintSystem } from "../ecs/systems/TintSystem";
 
+//TODO : Перенести update, input и т.д. в корутину!
 function MainLoop() {
-    /*  controller.on('W', (pressed) => {
-         log('W')
- 
-     }); */
-
     newCharEntity({ x: 0, y: 0 });
 
-
-    const systems = [
-        ControllerSystem,
-        MoveSystem,
-        GoSetPositionSystem
-    ];
-
-    for (const system of systems)
-        system();
-
-    ecs.systems.init(ecs);
+    ecs.systems.init(ecs,
+        [
+            ControllerSystem,
+            MoveSystem,
+            GoSetPositionSystem,
+            TintSystem
+        ]);
 }
 
 

@@ -78,8 +78,10 @@ export function SystemManager() {
             }
     }
 
-    function init(_ecs: ecs) {
+    function init(_ecs: ecs, systems: (() => number)[]) {
         ecs = _ecs;
+        for (const system of systems)
+            system();
     }
     return {
         update, input, create, init, setEnabled

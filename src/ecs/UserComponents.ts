@@ -12,9 +12,8 @@ import { newContainer } from "../utils/ui/uigo/container";
 import { v2 } from "./core/types";
 
 export const UserComponentsIDs = [
-    'UserComponent', 'GO', 'InputComponent', 'VelocityComponent'
-] as const;
-type t = keyof UserComps;
+    'UserComponent', 'GO', 'InputComponent', 'VelocityComponent', 'TintComponent'
+] satisfies (Required<keyof UserComps>)[];
 
 export type UserComps = {
     UserComponent: {
@@ -27,6 +26,7 @@ export type UserComps = {
     GameObject: { id: hash, direction: v2 }
 
     VelocityComponent: v2,
+    TintComponent: v2 & { z: number } & { spriteUrl: url },
 
     InputComponent: {
         init: (controller: ReturnType<typeof newController>) => void

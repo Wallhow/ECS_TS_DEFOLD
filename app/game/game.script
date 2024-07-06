@@ -10,13 +10,11 @@ local ____ControllerSystem = require("ecs.systems.ControllerSystem")
 local ControllerSystem = ____ControllerSystem.ControllerSystem
 local ____GoSetPositionSystem = require("ecs.systems.GoSetPositionSystem")
 local GoSetPositionSystem = ____GoSetPositionSystem.GoSetPositionSystem
+local ____TintSystem = require("ecs.systems.TintSystem")
+local TintSystem = ____TintSystem.TintSystem
 local function MainLoop()
     newCharEntity({x = 0, y = 0})
-    local systems = {ControllerSystem, MoveSystem, GoSetPositionSystem}
-    for ____, system in ipairs(systems) do
-        system()
-    end
-    ecs.systems.init(ecs)
+    ecs.systems.init(ecs, {ControllerSystem, MoveSystem, GoSetPositionSystem, TintSystem})
 end
 function ____exports.init(this)
     msg.post(".", "acquire_input_focus")

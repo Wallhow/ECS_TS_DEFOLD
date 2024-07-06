@@ -68,8 +68,11 @@ function ____exports.SystemManager()
             end
         end
     end
-    local function init(_ecs)
+    local function init(_ecs, systems)
         ecs = _ecs
+        for ____, system in ipairs(systems) do
+            system()
+        end
     end
     return {
         update = update,

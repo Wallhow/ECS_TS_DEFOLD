@@ -6,11 +6,11 @@ local ____exports = {}
 local ____UserComponents = require("ecs.UserComponents")
 local UserComponentsIDs = ____UserComponents.UserComponentsIDs
 ____exports._UserComponentsIDs = UserComponentsIDs
-local ____array_0 = __TS__SparseArrayNew(unpack({"PositionComponent", "CounterComponent"}))
+local ____array_0 = __TS__SparseArrayNew(unpack({"PositionComponent"}))
 __TS__SparseArrayPush(
     ____array_0,
     unpack(____exports._UserComponentsIDs)
 )
 ____exports._ComponentsIDs = {__TS__SparseArraySpread(____array_0)}
-____exports._Components = {PositionComponent = {x = 0, y = 0}, CounterComponent = {counter = 0}}
+____exports._Components = {PositionComponent = {x = 0, y = 0}}
 return ____exports
