@@ -1,28 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { ecs } from "../ecs/core/ECS";
 import * as flow from 'ludobits.m.flow';
-import { newCharEntity } from "./core/entities/CharEntity";
-import { newController } from "./core/input/Controller";
-import { action } from "../utils/defoldTweens/Actions";
-import { MoveSystem as MoveSystem } from "../ecs/systems/MoveSystem";
-import { ControllerSystem } from "../ecs/systems/ControllerSystem";
-import { GoSetPositionSystem } from "../ecs/systems/GoSetPositionSystem";
-import { TintSystem } from "../ecs/systems/TintSystem";
-
-//TODO : Перенести update, input и т.д. в корутину!
-function MainLoop() {
-    newCharEntity({ x: 0, y: 0 });
-
-    ecs.systems.init(ecs,
-        [
-            ControllerSystem,
-            MoveSystem,
-            GoSetPositionSystem,
-            TintSystem
-        ]);
-}
-
-
+import { MainLoop } from "./core/MainLoop";
 
 interface props {
     is_visible: boolean
@@ -32,8 +11,6 @@ export function init(this: props) {
 
     msg.post('.', 'acquire_input_focus');
     flow.start(() => MainLoop(), {});
-
-
 }
 
 export function update(this: props, dt: number) {
