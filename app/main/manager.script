@@ -5,7 +5,7 @@ local ____Manager = require("modules.Manager")
 local register_manager = ____Manager.register_manager
 local ____Ads = require("modules.Ads")
 local BannerPos = ____Ads.BannerPos
-function ____exports.init(self)
+function ____exports.init(this)
     msg.post(".", "acquire_input_focus")
     register_manager()
     Manager.init(
@@ -19,7 +19,7 @@ function ____exports.init(self)
         true
     )
 end
-function ____exports.on_message(self, message_id, _message, sender)
+function ____exports.on_message(this, message_id, _message, sender)
     Manager.on_message(self, message_id, _message, sender)
     if message_id == to_hash("LOAD_SCENE") then
         local message = _message
@@ -31,7 +31,7 @@ function ____exports.on_message(self, message_id, _message, sender)
             ____temp_0 = window.DIMMING_ON
         end
         ____window_set_dim_mode_1(____temp_0)
-        if html5 ~= nil then
+        if html5 ~= undefined then
             if message.name == "game" then
                 Ads.show_banner(BannerPos.POS_TOP_CENTER)
             else

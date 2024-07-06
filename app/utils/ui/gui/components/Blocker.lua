@@ -41,14 +41,14 @@ function ____exports.newBlockerShadowAnimations(blocker, color)
     local function show(compliteFunc)
         gui.set_visible(blocker.node, true)
         tween(blocker.node, "gui").to(0, "color", {color = color}).opacityTo(0.2, 0.45, {easing = "EASING_OUTSINE"}).call(function()
-            if compliteFunc ~= nil then
+            if compliteFunc ~= undefined then
                 compliteFunc()
             end
         end).start()
     end
     local function hide(compliteFunc)
         tween(blocker.node, "gui").opacityTo(0.2, 0, {easing = "EASING_OUTSINE"}).call(function()
-            if compliteFunc ~= nil then
+            if compliteFunc ~= undefined then
                 compliteFunc()
             end
         end).start()

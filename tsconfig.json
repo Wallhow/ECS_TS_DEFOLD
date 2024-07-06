@@ -1,31 +1,37 @@
 {
     "$schema": "https://raw.githubusercontent.com/TypeScriptToLua/TypeScriptToLua/master/tsconfig-schema.json",
     "compilerOptions": {
+        "experimentalDecorators": true,        "emitDecoratorMetadata": true,
         "target": "es2019",
         "lib": ["es2019"],
         "module": "commonjs",
         "esModuleInterop": true,
         "moduleResolution": "node",
-        "types": ["types", "language-extensions"],
+        "types": [
+            "types",
+            "language-extensions"
+        ],
         "typeRoots": [
-			"./@types",
-			"./node_modules/@types",
-			"./node_modules/@typescript-to-lua",
-			"./node_modules/@ts-defold"
-		],
-
+            "./@types",
+            "./node_modules/@types",
+            "./node_modules/@typescript-to-lua",
+            "./node_modules/@ts-defold"
+        ],
         "rootDir": "src",
         "outDir": "app",
         "strict": false,
         "noUnusedLocals": false,
         "noUnusedParameters": false,
         "sourceMap": false,
-
-        "plugins": [{ "name": "typescript-tstl-plugin" }]
+        "plugins": [
+            {
+                "name": "typescript-tstl-plugin"
+            }
+        ]
     },
     "exclude": [
         "./node_modules/*",
-        "./plugins/*"
+        "./plugins/*",
     ],
     "tstl": {
         "noHeader": true,
@@ -38,8 +44,16 @@
             {
                 "name": "@ts-defold/tstl-export-as-global",
                 "match": ".*\\..*script.ts$",
-                "globals": { 
-                    "functions": [ "init", "on_input", "on_message", "on_reload", "update", "fixed_update", "final"]
+                "globals": {
+                    "functions": [
+                        "init",
+                        "on_input",
+                        "on_message",
+                        "on_reload",
+                        "update",
+                        "fixed_update",
+                        "final"
+                    ]
                 }
             },
             {

@@ -9,7 +9,7 @@ function ____exports.ControllerSystem()
         {"InputComponent"},
         {input = function(____, entities, action_id, action)
             for ____, e in ipairs(entities) do
-                if controllers[e.id] == nil then
+                if controllers[e.id] == undefined then
                     controllers[e.id] = newController()
                     e.components.InputComponent:init(controllers[e.id])
                 end

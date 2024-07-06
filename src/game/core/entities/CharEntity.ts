@@ -16,6 +16,7 @@ export function newCharEntity(pos: { x: number, y: number }) {
         }
     });
 
+    
 
     ecs.addComponent(e, comp);
     ecs.addComponent(e, counter);

@@ -14,13 +14,13 @@ function ____exports.newContainer(this_go, size, start_scale)
         start_scale = 1
     end
     local array = {}
-    local selected_obj = ObservableVal(nil)
+    local selected_obj = ObservableVal(undefined)
     go.set_scale(
         vmath.vector3(start_scale, start_scale, 1),
         this_go
     )
     selected_obj.subscribe(function(val)
-        if val ~= nil then
+        if val ~= undefined then
         end
     end)
     local function add_child(child)
@@ -30,7 +30,7 @@ function ____exports.newContainer(this_go, size, start_scale)
         end
     end
     local function remove(index)
-        if array[index + 1] ~= nil then
+        if array[index + 1] ~= undefined then
             go.delete(array[index + 1].url)
             __TS__ArraySplice(array, index, 1)
         end
@@ -53,26 +53,26 @@ function ____exports.newContainer(this_go, size, start_scale)
         __TS__ArrayForEach(
             array,
             function(____, obj_)
-                if obj_ ~= nil then
-                    if obj_.is_pressed ~= nil then
+                if obj_ ~= undefined then
+                    if obj_.is_pressed ~= undefined then
                         local obj = obj_
                         local is_press = obj.is_pressed(x, y, action_id)
                         if is_press then
-                            selected_obj.set(nil)
+                            selected_obj.set(undefined)
                             selected_obj.set(obj_)
                         end
                     end
                 end
             end
         )
-        if action_id ~= nil and action_id == UIGO_ACTION_ID_RELEASED then
-            if selected_obj.get() ~= nil then
+        if action_id ~= undefined and action_id == UIGO_ACTION_ID_RELEASED then
+            if selected_obj.get() ~= undefined then
                 local obj = selected_obj.get()
-                if selected_obj.get().is_pressed ~= nil then
+                if selected_obj.get().is_pressed ~= undefined then
                     local obj_ = obj
                     obj_.hovered.set(false)
                     obj_.trigger_on()
-                    selected_obj.set(nil)
+                    selected_obj.set(undefined)
                     delta.x = math.huge
                     delta.y = math.huge
                 end

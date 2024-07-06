@@ -29,7 +29,7 @@ function ____exports.new_uigo_button(go_id, button_click_callback, custum_main_s
     local is_long_press = false
     hovered.subscribe(function(val)
         if val and _hover_effect_active == false then
-            if hover_callback ~= nil then
+            if hover_callback ~= undefined then
                 hover_callback(go_id)
             end
             if hover_effect then
@@ -64,11 +64,11 @@ function ____exports.new_uigo_button(go_id, button_click_callback, custum_main_s
         if is_hovered(x, y) then
             if action_id == UIGO_ACTION_ID_PRESSED then
                 _is_btn_pressed = true
-                if pressed_callback ~= nil then
+                if pressed_callback ~= undefined then
                     pressed_callback(go_id)
                 end
             elseif action_id == UIGO_ACTION_ID_RELEASED then
-                if released_callback ~= nil then
+                if released_callback ~= undefined then
                     released_callback(go_id)
                 end
                 if _is_btn_pressed then

@@ -22,7 +22,7 @@ function ____exports.newGrid(sizeX, sizeY, initialFun)
         if _isInBounds(_x, _y) then
             return grid[toIndex(_x, _y) + 1]
         else
-            return nil
+            return undefined
         end
     end
     local function set(x, y, value)
@@ -47,7 +47,7 @@ function ____exports.newGrid(sizeX, sizeY, initialFun)
     end
     local function contains(value, condition)
         local ____temp_0
-        if condition ~= nil then
+        if condition ~= undefined then
             ____temp_0 = condition
         else
             ____temp_0 = function(v) return v == value end
@@ -56,7 +56,7 @@ function ____exports.newGrid(sizeX, sizeY, initialFun)
         return __TS__ArrayFind(
             grid,
             function(____, v) return cond(v) end
-        ) ~= nil
+        ) ~= undefined
     end
     local function rows()
         return sizeY
@@ -79,7 +79,7 @@ function ____exports.newGrid(sizeX, sizeY, initialFun)
                     get(x, y),
                     {x = x, y = y, idx = y * sizeX + x}
                 )
-                if result ~= nil then
+                if result ~= undefined then
                     return result
                 end
             end

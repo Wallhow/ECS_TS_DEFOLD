@@ -33,7 +33,7 @@ function _createPopup(templateName)
             "position.y",
             {y = gui.get_position(node).y - 150}
         ).by(0.6, "position.y", {y = 150}, {easing = "EASING_OUTEXPO", compliteFunc = compliteFunc}).start()
-        return nil
+        return undefined
     end
     local clonedNodes = gui.clone_tree(gui.get_node(templateName .. "/root"))
     local nodes = getNodesFromTemplate(templateName, {"window", "label", "root"}, clonedNodes)
@@ -131,7 +131,7 @@ function ____exports.newGUIPopups(templateName, position)
     local function emitPopup(text)
         if #popupsQueuePool > 0 then
             local popup = table.remove(popupsQueuePool)
-            if popup ~= nil then
+            if popup ~= undefined then
                 _activatePopup(popup, text)
             end
         else

@@ -19,7 +19,7 @@ ____exports.ECS = function()
     local newEntity = em.newEntity
     local getEntity = em.getEntity
     local function addComponent(entityId, component)
-        if mapCompEntity[component.UUID] == nil then
+        if mapCompEntity[component.UUID] == undefined then
             mapCompEntity[component.UUID] = {}
         end
         local ____mapCompEntity_component_UUID_0 = mapCompEntity[component.UUID]

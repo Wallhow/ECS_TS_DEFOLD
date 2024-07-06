@@ -77,10 +77,10 @@ function _createGUIKeyboard(druid, lang, templateName, opt)
         if isBlockerEnabled then
             inputBlocker.refresh(true)
         end
-        if btnConfirm.druidNode ~= nil then
+        if btnConfirm.druidNode ~= undefined then
             druid:remove(btnConfirm.druidNode)
         end
-        if btnRemove.druidNode ~= nil then
+        if btnRemove.druidNode ~= undefined then
             druid:remove(btnRemove.druidNode)
         end
         if #keys > 0 then
@@ -89,7 +89,7 @@ function _createGUIKeyboard(druid, lang, templateName, opt)
                 function(____, key) return druid:remove(key) end
             )
         end
-        if staticGrid ~= nil then
+        if staticGrid ~= undefined then
             druid:remove(staticGrid)
         end
         local keyTemplateName = templateName .. "/keyBtn"
@@ -159,7 +159,7 @@ function _createGUIKeyboard(druid, lang, templateName, opt)
         return previewText
     end
     function _getOptions(opt)
-        if opt == nil then
+        if opt == undefined then
             return defaultOpt
         end
         local options = {}
@@ -168,7 +168,7 @@ function _createGUIKeyboard(druid, lang, templateName, opt)
             function(____, key)
                 local ____key_6 = key
                 local ____temp_5
-                if opt[key] == nil then
+                if opt[key] == undefined then
                     ____temp_5 = defaultOpt[key]
                 else
                     ____temp_5 = opt[key]

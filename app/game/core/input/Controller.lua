@@ -9,7 +9,7 @@ function ____exports.newController()
     local pressed, listeners, hashesKey
     function pressed(key, isPressed)
         if __TS__ArrayIncludes(hashesKey, key) then
-            if listeners[__TS__ArrayIndexOf(hashesKey, key)] ~= nil then
+            if listeners[__TS__ArrayIndexOf(hashesKey, key)] ~= undefined then
                 for ____, listener in ipairs(listeners[__TS__ArrayIndexOf(hashesKey, key)]) do
                     listener(isPressed)
                 end
@@ -23,11 +23,11 @@ function ____exports.newController()
     )
     local function input(action_id, action)
         if action_id ~= hash("touch") and (action.pressed or action.released) then
-            pressed(action_id, action.pressed ~= nil and action.pressed == true)
+            pressed(action_id, action.pressed ~= undefined and action.pressed == true)
         end
     end
     local function on(key, func)
-        if listeners[__TS__ArrayIndexOf(InputKeys, key)] == nil then
+        if listeners[__TS__ArrayIndexOf(InputKeys, key)] == undefined then
             listeners[__TS__ArrayIndexOf(InputKeys, key)] = {}
         end
         local ____listeners___TS__ArrayIndexOf_result_0 = listeners[__TS__ArrayIndexOf(InputKeys, key)]

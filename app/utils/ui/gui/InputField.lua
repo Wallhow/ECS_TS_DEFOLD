@@ -20,7 +20,7 @@ function ____exports.newInputField()
     --- Рассылает слушателям подписаным на CHANGE новый текст и кеширует его в переменную value
     local function setText(newValue)
         value = newValue
-        events.emit("CHANGED", value)
+        events:emit("CHANGED", value)
     end
     local function getText()
         return value

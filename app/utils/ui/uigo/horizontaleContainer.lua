@@ -25,7 +25,7 @@ local function newHorizontaleContainer(this_go, size, start_scale)
                 local btn = domino
                 if btn == selected_obj.get() and not btn[2].is_long_press then
                     btn[2].is_long_press = true
-                    if btn[2].long_press_callback ~= nil then
+                    if btn[2].long_press_callback ~= undefined then
                         btn[2].long_press_callback(btn[2].url)
                     end
                 end
@@ -42,7 +42,7 @@ local function newHorizontaleContainer(this_go, size, start_scale)
                 local pos = go.get_position(obj[1].url)
                 local ____temp_1 = i * width - half_area
                 local ____temp_0
-                if new_child == nil then
+                if new_child == undefined then
                     ____temp_0 = width / 2
                 else
                     ____temp_0 = 0
@@ -59,7 +59,7 @@ local function newHorizontaleContainer(this_go, size, start_scale)
                 )
             end
         )
-        if new_child ~= nil then
+        if new_child ~= undefined then
             local new_child_pos = go.get_position(new_child[1].url)
             new_child_pos.z = 0
             new_child_pos.x = #array * width - half_area
@@ -89,18 +89,18 @@ local function newHorizontaleContainer(this_go, size, start_scale)
     array = {}
     padding = 5
     TIME_LONG_PRESS = 0.3
-    selected_obj = ObservableVal(nil)
+    selected_obj = ObservableVal(undefined)
     _scale = 1
     go.set_scale(
         vmath.vector3(start_scale, start_scale, 1),
         this_go
     )
     selected_obj.subscribe(function(val)
-        if val ~= nil then
+        if val ~= undefined then
         end
     end)
     local function add_child(child)
-        if width_child == nil then
+        if width_child == undefined then
             width_child = child[1].width()
         end
         go.set_parent(child[1].url, this_go)
@@ -110,7 +110,7 @@ local function newHorizontaleContainer(this_go, size, start_scale)
         end
     end
     local function remove(index)
-        if array[index + 1] ~= nil then
+        if array[index + 1] ~= undefined then
             go.delete(array[index + 1][1].url)
             __TS__ArraySplice(array, index, 1)
         end
@@ -134,18 +134,18 @@ local function newHorizontaleContainer(this_go, size, start_scale)
         __TS__ArrayForEach(
             array,
             function(____, obj_)
-                if obj_ ~= nil then
+                if obj_ ~= undefined then
                     local obj = obj_[2]
                     local is_press = obj.is_pressed(x, y, action_id)
                     if is_press then
-                        selected_obj.set(nil)
+                        selected_obj.set(undefined)
                         selected_obj.set(obj_)
                     end
                 end
             end
         )
         in_next_frame(function()
-            if selected_obj.get() ~= nil then
+            if selected_obj.get() ~= undefined then
                 local domino = selected_obj.get()
                 check_long_press(domino)
                 local click_pos = camera.screen_to_world(action.x, action.y)
@@ -159,17 +159,17 @@ local function newHorizontaleContainer(this_go, size, start_scale)
                 click_pos.z = 6
                 go.set_position(click_pos, domino[2].url)
                 if action.dx ~= 0 or action.dy ~= 0 then
-                    if domino[2].on_drag_callback ~= nil then
+                    if domino[2].on_drag_callback ~= undefined then
                         domino[2].on_drag_callback(domino[2].url, action.dx, action.dy)
                     end
                 end
             end
         end)
-        if action_id ~= nil and action_id == UIGO_ACTION_ID_RELEASED then
-            if selected_obj.get() ~= nil then
+        if action_id ~= undefined and action_id == UIGO_ACTION_ID_RELEASED then
+            if selected_obj.get() ~= undefined then
                 selected_obj.get()[2].hovered.set(false)
                 selected_obj.get()[2].trigger_on()
-                selected_obj.set(nil)
+                selected_obj.set(undefined)
                 delta.x = math.huge
                 delta.y = math.huge
             end

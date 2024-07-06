@@ -11,13 +11,13 @@ function ____exports.SystemManager()
         local res = ecs.getEntitiesWithComponents(components)
         if #res > 0 then
             local e = res
-            if e ~= nil then
+            if e ~= undefined then
                 for ____, i in ipairs(e) do
                     local entity = ecs.getEntity(i)
                     if __TS__ArrayFind(
                         entities,
                         function(____, e) return e.id == i end
-                    ) == nil then
+                    ) == undefined then
                         entities[#entities + 1] = {id = i, components = entity}
                     end
                 end
@@ -38,14 +38,14 @@ function ____exports.SystemManager()
         for ____, system in ipairs(systems) do
             if system.isEnabled then
                 local entities = getEntities(system.components)
-                if system.update ~= nil then
+                if system.update ~= undefined then
                     system:update(entities, dt)
                 end
             end
         end
     end
     local function setEnabled(descSystem, isEnabled)
-        if systems[descSystem + 1] ~= nil then
+        if systems[descSystem + 1] ~= undefined then
             systems[descSystem + 1].isEnabled = isEnabled
         else
             assert(
@@ -62,7 +62,7 @@ function ____exports.SystemManager()
         if #inputSystems > 0 then
             for ____, system in ipairs(inputSystems) do
                 local entities = getEntities(system.components)
-                if system.input ~= nil then
+                if system.input ~= undefined then
                     system:input(entities, action_id, action)
                 end
             end

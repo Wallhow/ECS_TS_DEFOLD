@@ -1,5 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-empty-function */
 
+/**
+ * @noSelfInFile
+*/
 
 import { InputKeys } from "../ecs/CONSTS";
 import { newController } from "../game/core/input/Controller";
@@ -9,6 +14,7 @@ import { v2 } from "./core/types";
 export const UserComponentsIDs = [
     'UserComponent', 'GO', 'InputComponent', 'VelocityComponent'
 ] as const;
+type t = keyof UserComps;
 
 export type UserComps = {
     UserComponent: {
@@ -26,4 +32,7 @@ export type UserComps = {
         init: (controller: ReturnType<typeof newController>) => void
     },
 };
+
+
+
 

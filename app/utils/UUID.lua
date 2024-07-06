@@ -2,7 +2,7 @@ local ____exports = {}
 local function UUID()
     local uuids = {}
     local function get(key)
-        if uuids[key] == nil then
+        if uuids[key] == undefined then
             uuids[key] = 0
         end
         uuids[key] = uuids[key] + 1

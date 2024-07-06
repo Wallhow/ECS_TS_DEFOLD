@@ -31,6 +31,9 @@ function ____exports.uigo_effects()
         if easing == nil then
             easing = go.EASING_OUTSINE
         end
+        if complite_func == nil then
+            complite_func = undefined
+        end
         go.animate(
             uigo.url,
             "scale",
@@ -43,6 +46,9 @@ function ____exports.uigo_effects()
         )
     end
     local function anim_opacity(uigo, to_opacity, duration, easing, complite_func)
+        if complite_func == nil then
+            complite_func = undefined
+        end
         local color = go.get(uigo.url, "color")
         color.w = to_opacity
         go.animate(
@@ -57,6 +63,9 @@ function ____exports.uigo_effects()
         )
     end
     local function anim_rotation(uigo, to_rotate, duration, easing, complite_func)
+        if complite_func == nil then
+            complite_func = undefined
+        end
         go.animate(
             uigo.url,
             "rotation",
@@ -69,6 +78,9 @@ function ____exports.uigo_effects()
         )
     end
     local function anim_position(uigo, to_position, duration, easing, complite_func)
+        if complite_func == nil then
+            complite_func = undefined
+        end
         go.animate(
             uigo.url,
             "position",

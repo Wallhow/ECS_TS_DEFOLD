@@ -10,7 +10,7 @@ function ____exports.getNodesFromTemplate(templateName, nodesName, template)
     for ____, name in ipairs(nodesName) do
         local ____name_1 = name
         local ____temp_0
-        if template == nil then
+        if template == undefined then
             ____temp_0 = gui.get_node((templateName .. "/") .. name)
         else
             ____temp_0 = template[(templateName .. "/") .. name]
@@ -41,7 +41,7 @@ function ____exports.getNodes(nodesName, templateName, template)
         local templatePrefix = ____temp_2
         local nodePath = templatePrefix .. nodeName
         local ____temp_3
-        if template == nil then
+        if template == undefined then
             ____temp_3 = gui.get_node(nodePath)
         else
             ____temp_3 = template[nodePath]

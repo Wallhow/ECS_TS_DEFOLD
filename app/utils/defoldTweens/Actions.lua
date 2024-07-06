@@ -9,7 +9,7 @@ function _createActions(obj)
     local getOpt, _startTween, defaultOptions, thisTween
     function getOpt(opt, key)
         local ____temp_1
-        if opt ~= nil and opt[key] ~= nil then
+        if opt ~= undefined and opt[key] ~= undefined then
             ____temp_1 = opt[key]
         else
             ____temp_1 = defaultOptions[key]

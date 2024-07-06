@@ -22,7 +22,7 @@ ____exports.array = {
         end
         __TS__ArraySplice(array, 0, #array)
     end,
-    sum = function(array)
+    sum = function(self, this, array)
         local ____temp_1
         if #array > 1 then
             ____temp_1 = __TS__ArrayReduce(

@@ -199,7 +199,7 @@ function ____exports.newUIScalableContainer(container_go_id, _display_size)
                 0,
                 function()
                     go.set_parent(go_ui.url, container_go_id, true)
-                    if position_function ~= nil then
+                    if position_function ~= undefined then
                         position_function(
                             position(go_ui),
                             go_ui,
@@ -229,7 +229,7 @@ function ____exports.newUIScalableContainer(container_go_id, _display_size)
                 0.01,
                 false,
                 function()
-                    if position_function ~= nil then
+                    if position_function ~= undefined then
                         position_function(
                             position(go_ui),
                             go_ui,

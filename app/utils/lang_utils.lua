@@ -30,7 +30,7 @@ function ____exports.getAppLang()
     return lang
 end
 function ____exports.hasLang(code)
-    return langsData[code] ~= nil
+    return langsData[code] ~= undefined
 end
 function ____exports.setLang(lang, saveLang)
     if saveLang == nil then
@@ -77,7 +77,7 @@ function ____exports.getCodeText(code)
         print("not lang getCodeText:", curLang)
         return ""
     end
-    if data[code] == nil then
+    if data[code] == undefined then
         print("код не найден", code)
         return ""
     end

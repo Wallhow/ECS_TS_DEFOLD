@@ -18,26 +18,26 @@ local function MainLoop()
     end
     ecs.systems.init(ecs)
 end
-function ____exports.init(self)
+function ____exports.init(this)
     msg.post(".", "acquire_input_focus")
     flow.start(
         function() return MainLoop() end,
         {}
     )
 end
-function ____exports.update(self, dt)
+function ____exports.update(this, dt)
     ecs.update(dt)
 end
-function ____exports.on_message(self, message_id, message, sender)
+function ____exports.on_message(this, message_id, message, sender)
     flow.on_message(message_id, message, sender)
 end
-function ____exports.on_input(self, action_id, action)
+function ____exports.on_input(this, action_id, action)
     if action_id == ID_MESSAGES.MSG_TOUCH then
         msg.post(".", action_id, action)
     end
     ecs.input(action_id, action)
 end
-function ____exports.final(self)
+function ____exports.final(this)
     flow.stop()
 end
 init = ____exports.init

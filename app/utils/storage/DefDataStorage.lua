@@ -16,7 +16,7 @@ function ____exports.DefDataStorage(defaultValues, storageName)
     end
     function _loadItem(key)
         local storageValue = Storage.get(prefix .. key)
-        if storageValue == nil then
+        if storageValue == undefined then
             storageValue = json.encode({value = defaultValues[key]}, {})
             Storage.set(prefix .. key, storageValue)
         end

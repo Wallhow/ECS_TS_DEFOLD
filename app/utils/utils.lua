@@ -222,10 +222,10 @@ function ____exports.iterate(object, func)
 end
 function ____exports.lastIndexOf(str, pattern)
     if pattern == "" then
-        return nil
+        return undefined
     end
     local position = {string.find(str, pattern, 1)}
-    local previous = nil
+    local previous = undefined
     while #position ~= 0 do
         previous = position
         position = {string.find(str, pattern, previous[1] + 1)}

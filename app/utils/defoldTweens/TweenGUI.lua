@@ -75,7 +75,7 @@ function ____exports._newTweensForNode(obj)
     function _getValue(prop, value)
         local axis = _getAxis(prop)
         local ____temp_20
-        if axis ~= nil then
+        if axis ~= undefined then
             ____temp_20 = value[axis]
         else
             ____temp_20 = value[prop]
@@ -91,13 +91,13 @@ function ____exports._newTweensForNode(obj)
             )
             return axis
         else
-            return nil
+            return undefined
         end
     end
     function _getClearProp(prop)
         local axis = _getAxis(prop)
         local ____temp_21
-        if axis ~= nil then
+        if axis ~= undefined then
             ____temp_21 = __TS__StringReplace(prop, "." .. axis, "")
         else
             ____temp_21 = prop
@@ -107,7 +107,7 @@ function ____exports._newTweensForNode(obj)
     function _getNodeProp(prop)
         local prop_key = _getClearProp(prop)
         local ____temp_22
-        if _getAxis(prop) ~= nil then
+        if _getAxis(prop) ~= undefined then
             ____temp_22 = _getAxis(prop)
         else
             ____temp_22 = ""
@@ -127,7 +127,7 @@ function ____exports._newTweensForNode(obj)
     function _setNodeProp(prop, value)
         local prop_key = _getClearProp(prop)
         local ____temp_24
-        if _getAxis(prop) ~= nil then
+        if _getAxis(prop) ~= undefined then
             ____temp_24 = _getAxis(prop)
         else
             ____temp_24 = ""
@@ -148,13 +148,13 @@ function ____exports._newTweensForNode(obj)
         if opt == nil then
             return _defaultGUIOpationsMap[key]
         end
-        if opt[key] == nil then
+        if opt[key] == undefined then
             return _defaultGUIOpationsMap[key]
         else
             return opt[key]
         end
     end
-    assert(flow ~= nil, "ludobits.m.flow is not defined, please add it to your project this library")
+    assert(flow ~= undefined, "ludobits.m.flow is not defined, please add it to your project this library")
     local ____temp_0
     if type(obj) == "string" then
         ____temp_0 = gui.get_node(obj)
@@ -231,13 +231,13 @@ function ____exports._newTweensForNode(obj)
         local ____duration_6 = duration
         local ____vmath_vector3_5 = vmath.vector3
         local ____temp_3
-        if positionBy.x ~= nil then
+        if positionBy.x ~= undefined then
             ____temp_3 = positionBy.x
         else
             ____temp_3 = 0
         end
         local ____temp_4
-        if positionBy.y ~= nil then
+        if positionBy.y ~= undefined then
             ____temp_4 = positionBy.y
         else
             ____temp_4 = 0
@@ -254,13 +254,13 @@ function ____exports._newTweensForNode(obj)
         local ____duration_11 = duration
         local ____vmath_vector3_10 = vmath.vector3
         local ____temp_8
-        if positionTo.x ~= nil then
+        if positionTo.x ~= undefined then
             ____temp_8 = positionTo.x
         else
             ____temp_8 = 0
         end
         local ____temp_9
-        if positionTo.y ~= nil then
+        if positionTo.y ~= undefined then
             ____temp_9 = positionTo.y
         else
             ____temp_9 = 0
@@ -273,8 +273,8 @@ function ____exports._newTweensForNode(obj)
         )
     end
     local function scaleTo(duration, scaleBy, otherOpt)
-        if scaleBy.x == nil or scaleBy.y == nil then
-            if scaleBy.x ~= nil then
+        if scaleBy.x == undefined or scaleBy.y == undefined then
+            if scaleBy.x ~= undefined then
                 return to(duration, "scale.x", {x = scaleBy.x}, otherOpt)
             else
                 return to(duration, "scale.y", {y = scaleBy.y}, otherOpt)
@@ -284,13 +284,13 @@ function ____exports._newTweensForNode(obj)
             local ____duration_16 = duration
             local ____vmath_vector3_15 = vmath.vector3
             local ____temp_13
-            if scaleBy.x ~= nil then
+            if scaleBy.x ~= undefined then
                 ____temp_13 = scaleBy.x
             else
                 ____temp_13 = 0
             end
             local ____temp_14
-            if scaleBy.y ~= nil then
+            if scaleBy.y ~= undefined then
                 ____temp_14 = scaleBy.y
             else
                 ____temp_14 = 0

@@ -11,7 +11,7 @@ function _createPopupAnimbation(rootNode, autoDisableNodeAfterHide)
     local _action
     function _action(anim, func)
         local res = anim(rootNode)
-        if res ~= nil then
+        if res ~= undefined then
             res.call(function() return func() end).start()
         else
             func()
@@ -39,7 +39,7 @@ function _createPopupAnimbation(rootNode, autoDisableNodeAfterHide)
                 {scale = vmath.vector3(1, 1, 1)},
                 {easing = "EASING_OUTELASTIC", compliteFunc = compliteFunc}
             ).start()
-            return nil
+            return undefined
         end,
         hide = function(rootNode, compliteFunc)
             tween(rootNode, "gui").opacityTo(0.5, 0, {easing = "EASING_OUTSINE", compliteFunc = compliteFunc}).start()
@@ -55,31 +55,31 @@ function _createPopupAnimbation(rootNode, autoDisableNodeAfterHide)
     if autoDisableNodeAfterHide then
         ____autoDisableNodeAfterHide_0 = function() return gui.set_enabled(rootNode, false) end
     else
-        ____autoDisableNodeAfterHide_0 = nil
+        ____autoDisableNodeAfterHide_0 = undefined
     end
     local disableFunc = ____autoDisableNodeAfterHide_0
     local ____autoDisableNodeAfterHide_1
     if autoDisableNodeAfterHide then
         ____autoDisableNodeAfterHide_1 = function() return gui.set_enabled(rootNode, true) end
     else
-        ____autoDisableNodeAfterHide_1 = nil
+        ____autoDisableNodeAfterHide_1 = undefined
     end
     local enableFunc = ____autoDisableNodeAfterHide_1
     local function show()
-        if enableFunc ~= nil then
+        if enableFunc ~= undefined then
             enableFunc()
         end
         _action(
             animations.show,
-            function() return e.emit("show") end
+            function() return e:emit("show") end
         )
     end
     local function hide()
         local function __disable()
-            if disableFunc ~= nil then
+            if disableFunc ~= undefined then
                 disableFunc()
             end
-            e.emit("hide")
+            e:emit("hide")
         end
         _action(animations.hide, __disable)
     end

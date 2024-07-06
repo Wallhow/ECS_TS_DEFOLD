@@ -28,7 +28,7 @@ function ____exports.newEasyEvents(events, callbacksDeclare)
         listeners[eventKey] = {}
     end
     local function on(event, callback, context)
-        if listeners[event] == nil then
+        if listeners[event] == undefined then
             listeners[event] = {}
         end
         local ____listeners_event_0 = listeners[event]
@@ -36,7 +36,7 @@ function ____exports.newEasyEvents(events, callbacksDeclare)
     end
     local function emit(event, ...)
         local args = {...}
-        if listeners[event] ~= nil then
+        if listeners[event] ~= undefined then
             for ____, listener in ipairs(listeners[event]) do
                 local ____callbackCall_result_1 = _callbackCall(listener, args)
                 local isOk = ____callbackCall_result_1.isOk
@@ -50,7 +50,7 @@ function ____exports.newEasyEvents(events, callbacksDeclare)
     local function final()
         for ____, key in ipairs(events) do
             local listenerList = listeners[key]
-            if listenerList ~= nil and #listenerList > 0 then
+            if listenerList ~= undefined and #listenerList > 0 then
                 __TS__ArraySplice(listenerList, 0, #listenerList - 1)
             end
             __TS__Delete(listeners, key)

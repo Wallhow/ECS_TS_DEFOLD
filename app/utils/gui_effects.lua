@@ -2,7 +2,7 @@ local ____exports = {}
 local gui_animate
 function gui_animate(node, prop, to, easing, duration, delay, playback)
     local co = coroutine.running()
-    if co ~= nil then
+    if co ~= undefined then
         gui.animate(
             node,
             prop,

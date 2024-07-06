@@ -4,7 +4,7 @@ function ____exports.EntityManager()
     local entities = {}
     local function newEntity()
         local id = UIDsEntity
-        if entities[id] == nil then
+        if entities[id] == undefined then
             entities[id] = {}
         end
         UIDsEntity = UIDsEntity + 1

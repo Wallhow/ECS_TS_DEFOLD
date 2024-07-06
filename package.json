@@ -3,7 +3,7 @@
     "dev": "tstl --watch"
   },
   "devDependencies": {
-     "@ts-defold/library": "latest",
+    "@ts-defold/library": "latest",
     "@ts-defold/tstl-export-as-global": "latest",
     "@ts-defold/tstl-userdata-sugar": "latest",
     "@ts-defold/types": "latest",

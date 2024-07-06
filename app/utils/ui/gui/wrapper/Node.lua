@@ -19,7 +19,7 @@ function ____exports.Node(node, constructor)
             end
         end
     end
-    if constructor ~= nil then
+    if constructor ~= undefined then
         constructor(methods, node)
     end
     return __TS__ObjectAssign({}, methods, {self = _node})

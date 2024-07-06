@@ -6,7 +6,7 @@ local ____Tween = require("utils.defoldTweens.Tween")
 local tween = ____Tween.tween
 local ____ShrinkText = require("utils.ui.gui.components.ShrinkText")
 local newShrinkText = ____ShrinkText.newShrinkText
-function ____exports.init(self)
+function ____exports.init(this)
     local _updateMusicToggleButton, tutorialMoveNext, nodes
     function _updateMusicToggleButton()
         gui.set_enabled(
@@ -63,18 +63,18 @@ function ____exports.init(self)
         end
     )
 end
-function ____exports.on_input(self, action_id, action)
+function ____exports.on_input(this, action_id, action)
     local res = self.druid:on_input(action_id, action)
     return res
 end
-function ____exports.update(self, dt)
+function ____exports.update(this, dt)
     self.druid:update(dt)
 end
-function ____exports.on_message(self, message_id, message, sender)
+function ____exports.on_message(this, message_id, message, sender)
     Manager.on_message_gui(self, message_id, message, sender)
     self.druid:on_message(message_id, message, sender)
 end
-function ____exports.final(self)
+function ____exports.final(this)
     self.druid:final()
 end
 init = ____exports.init

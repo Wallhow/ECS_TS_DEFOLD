@@ -25,7 +25,7 @@ function ____exports.CloudDataStorage(defaultValues, storageName)
     function _loadItem(key)
         local val = storage.get(prefix .. key)
         pprint(storage.get(prefix .. key))
-        if val == nil or val == "" then
+        if val == undefined or val == "" then
             set(key, defaultValues[key])
         else
             cache[key] = json.decode(val, {}).value
