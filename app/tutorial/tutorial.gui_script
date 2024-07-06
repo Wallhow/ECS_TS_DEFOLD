@@ -1,0 +1,85 @@
+local ____exports = {}
+local druid = require("druid.druid")
+local ____utilsFun = require("utils.ui.gui.utilsFun")
+local getNodes = ____utilsFun.getNodes
+local ____Tween = require("utils.defoldTweens.Tween")
+local tween = ____Tween.tween
+local ____ShrinkText = require("utils.ui.gui.components.ShrinkText")
+local newShrinkText = ____ShrinkText.newShrinkText
+function ____exports.init(self)
+    local _updateMusicToggleButton, tutorialMoveNext, nodes
+    function _updateMusicToggleButton()
+        gui.set_enabled(
+            gui.get_node("musicOn"),
+            Sound.is_active()
+        )
+        gui.set_enabled(
+            gui.get_node("musicOff"),
+            not Sound.is_active()
+        )
+    end
+    function tutorialMoveNext()
+        tween(nodes.contentContainer, "gui").moveBy(0.2, {x = -400}).start()
+    end
+    Manager.init_gui()
+    self.druid = druid.new(self)
+    nodes = getNodes({
+        "contentContainer",
+        "labelStep1",
+        "labelStep2",
+        "labelStep3",
+        "tutorialLabel",
+        "button",
+        "label"
+    })
+    newShrinkText(nodes.labelStep1, "y").set(Lang.get_text("labelStep1"))
+    newShrinkText(nodes.labelStep2, "y").set(Lang.get_text("labelStep2"))
+    newShrinkText(nodes.labelStep3, "y").set(Lang.get_text("labelStep3"))
+    self.druid:new_button(
+        "btnOptions",
+        function()
+            Sound.set_active(not Sound.is_active())
+            _updateMusicToggleButton()
+        end
+    )
+    _updateMusicToggleButton()
+    local pressCounter = 0
+    self.druid:new_button(
+        nodes.button,
+        function()
+            pressCounter = pressCounter + 1
+            if pressCounter > 2 then
+                if pressCounter > 3 then
+                    Storage.set("is_not_fst", true)
+                    Scene.load("game")
+                end
+                gui.set_text(
+                    nodes.label,
+                    Lang.get_text("startGame")
+                )
+            else
+                tutorialMoveNext()
+            end
+        end
+    )
+end
+function ____exports.on_input(self, action_id, action)
+    local res = self.druid:on_input(action_id, action)
+    return res
+end
+function ____exports.update(self, dt)
+    self.druid:update(dt)
+end
+function ____exports.on_message(self, message_id, message, sender)
+    Manager.on_message_gui(self, message_id, message, sender)
+    self.druid:on_message(message_id, message, sender)
+end
+function ____exports.final(self)
+    self.druid:final()
+end
+init = ____exports.init
+on_input = ____exports.on_input
+update = ____exports.update
+on_message = ____exports.on_message
+final = ____exports.final
+

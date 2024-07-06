@@ -1,0 +1,45 @@
+local ____exports = {}
+local druid = require("druid.druid")
+local default_style = require("druid.styles.default.style")
+local ____Manager = require("modules.Manager")
+local register_manager = ____Manager.register_manager
+local ____Ads = require("modules.Ads")
+local BannerPos = ____Ads.BannerPos
+function ____exports.init(self)
+    msg.post(".", "acquire_input_focus")
+    register_manager()
+    Manager.init(
+        function()
+            Sound.attach_druid_click("btn")
+            default_style.scroll.WHEEL_SCROLL_SPEED = 10
+            druid.set_default_style(default_style)
+            Scene.set_bg(GameStorage.get("bg_color"))
+            Scene.load("game", true)
+        end,
+        true
+    )
+end
+function ____exports.on_message(self, message_id, _message, sender)
+    Manager.on_message(self, message_id, _message, sender)
+    if message_id == to_hash("LOAD_SCENE") then
+        local message = _message
+        local ____window_set_dim_mode_1 = window.set_dim_mode
+        local ____temp_0
+        if message.name == "game" then
+            ____temp_0 = window.DIMMING_OFF
+        else
+            ____temp_0 = window.DIMMING_ON
+        end
+        ____window_set_dim_mode_1(____temp_0)
+        if html5 ~= nil then
+            if message.name == "game" then
+                Ads.show_banner(BannerPos.POS_TOP_CENTER)
+            else
+                Ads.hide_banner()
+            end
+        end
+    end
+end
+init = ____exports.init
+on_message = ____exports.on_message
+

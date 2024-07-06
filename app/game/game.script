@@ -1,0 +1,48 @@
+local ____exports = {}
+local ____ECS = require("ecs.core.ECS")
+local ecs = ____ECS.ecs
+local flow = require("ludobits.m.flow")
+local ____CharEntity = require("game.core.entities.CharEntity")
+local newCharEntity = ____CharEntity.newCharEntity
+local ____MoveSystem = require("ecs.systems.MoveSystem")
+local MoveSystem = ____MoveSystem.MoveSystem
+local ____ControllerSystem = require("ecs.systems.ControllerSystem")
+local ControllerSystem = ____ControllerSystem.ControllerSystem
+local ____GoSetPositionSystem = require("ecs.systems.GoSetPositionSystem")
+local GoSetPositionSystem = ____GoSetPositionSystem.GoSetPositionSystem
+local function MainLoop()
+    newCharEntity({x = 0, y = 0})
+    local systems = {ControllerSystem, MoveSystem, GoSetPositionSystem}
+    for ____, system in ipairs(systems) do
+        system()
+    end
+    ecs.systems.init(ecs)
+end
+function ____exports.init(self)
+    msg.post(".", "acquire_input_focus")
+    flow.start(
+        function() return MainLoop() end,
+        {}
+    )
+end
+function ____exports.update(self, dt)
+    ecs.update(dt)
+end
+function ____exports.on_message(self, message_id, message, sender)
+    flow.on_message(message_id, message, sender)
+end
+function ____exports.on_input(self, action_id, action)
+    if action_id == ID_MESSAGES.MSG_TOUCH then
+        msg.post(".", action_id, action)
+    end
+    ecs.input(action_id, action)
+end
+function ____exports.final(self)
+    flow.stop()
+end
+init = ____exports.init
+update = ____exports.update
+on_message = ____exports.on_message
+on_input = ____exports.on_input
+final = ____exports.final
+

@@ -1,0 +1,1 @@
+export type ExtractPropsType<T, FType> = Pick<T, { [K in keyof T]: T[K] extends FType ? K : never; }[keyof T]>;

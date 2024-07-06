@@ -1,0 +1,65 @@
+[bootstrap]
+main_collection = /main/main.collectionc
+render = /project_settings/render.renderc
+
+[script]
+shared_state = 1
+
+[display]
+width = 960
+height = 540
+display_profiles = /project_settings/m.display_profilesc
+high_dpi = 1
+dynamic_orientation = 0
+
+[android]
+input_method = HiddenInputField
+display_cutout = 0
+immersive_mode = 1
+package = com.sbgames.balda
+minimum_sdk_version = 21
+version_code = 6
+
+[project]
+title = BestGame
+bundle_resources = /project_settings/bundle
+version = 1.00
+dependencies#0 = https://github.com/britzl/ludobits/archive/refs/heads/master.zip
+dependencies#1 = https://github.com/Insality/druid/archive/master.zip
+dependencies#2 = https://github.com/AGulev/jstodef/archive/master.zip
+
+[native_extension]
+app_manifest = /project_settings/generated.appmanifest
+
+[graphics]
+texture_profiles = /project_settings/TextureProfile.texture_profiles
+
+[input]
+use_accelerometer = 0
+game_binding = /project_settings/game.input_bindingc
+
+[html5]
+show_fullscreen_button = 0
+show_made_with_defold = 0
+show_console_banner = 0
+scale_mode = stretch
+htmlfile = /instant_games_bridge/engine_template.html
+wasm_streaming = 1
+heap_size = 128
+splash_image = /assets/diamond.png
+
+[yametrica]
+counter_id = 95125568
+
+[render]
+clear_color_red = 0.0
+
+[label]
+max_count = 256
+
+[sprite]
+max_count = 512
+
+[library]
+include_dirs = instant_games_bridge
+

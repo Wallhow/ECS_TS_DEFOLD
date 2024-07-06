@@ -1,0 +1,1 @@
+export const InputKeys = ['W', 'A', "S", "D"] as const;
